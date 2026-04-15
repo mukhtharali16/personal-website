@@ -3,53 +3,76 @@ import { getAllPosts } from "@/lib/posts";
 
 const projects = [
   {
-    title: "Project One",
-    description: "Short description of what this project does and why it matters.",
-    href: "https://github.com/your-username/project-one",
+    name: "Langgraph",
+    description:
+      "Experiments with LangGraph — building stateful, multi-step AI agents.",
+    href: "https://github.com/mukhtharali16/Langgraph",
   },
   {
-    title: "Project Two",
-    description: "Short description of what this project does and why it matters.",
-    href: "https://github.com/your-username/project-two",
+    name: "Bootdev-bookbot",
+    description:
+      "A small Python CLI that analyzes books by word count. Built following the Boot.dev backend course.",
+    href: "https://github.com/mukhtharali16/Bootdev-bookbot",
   },
   {
-    title: "Project Three",
-    description: "Short description of what this project does and why it matters.",
-    href: "https://github.com/your-username/project-three",
+    name: "2026-Exp",
+    description: "Scratchpad repo for trying new ideas and tools this year.",
+    href: "https://github.com/mukhtharali16/2026-Exp",
+  },
+  {
+    name: "personal-website",
+    description:
+      "This site. Next.js 14 + Tailwind, file-based markdown blog, deployed on Vercel.",
+    href: "https://github.com/mukhtharali16/personal-website",
   },
 ];
 
 export default function HomePage() {
-  const posts = getAllPosts().slice(0, 3);
+  const posts = getAllPosts().slice(0, 5);
 
   return (
-    <div className="space-y-16">
-      <section className="pt-6">
-        <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
-          Hi, I'm <span className="text-blue-600">Your Name</span>.
-        </h1>
-        <p className="mt-4 text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed">
-          I'm a &lt;role&gt; based in &lt;city&gt;. I build &lt;what you build&gt; and write
-          about &lt;topics&gt;. TODO: replace this bio with your own.
-        </p>
-        <div className="mt-6 flex gap-4 text-sm">
-          <a href="mailto:you@example.com" className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">
-            Get in touch
-          </a>
-          <a href="/resume.pdf" className="px-4 py-2 rounded border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-900">
-            Resume
-          </a>
+    <div className="space-y-14">
+      <section>
+        <h1 className="text-2xl font-medium mb-6">Mukhthar Ali Ashraf</h1>
+        <div className="space-y-4 text-neutral-700 dark:text-neutral-300 leading-7">
+          <p>
+            QA engineer at{" "}
+            <a href="https://mitsogo.com" target="_blank" rel="noreferrer">
+              Mitsogo
+            </a>
+            , based in Kochi. Fresh out of TKM College of Engineering with a
+            degree in Electrical & Electronics Engineering.
+          </p>
+          <p>
+            I spend my time building apps and learning about agentic AI — the
+            kind of software that can plan, use tools, and finish a task on its own.
+          </p>
+          <p>This is where I write about what I'm learning.</p>
         </div>
       </section>
 
-      <section id="projects">
-        <h2 className="text-2xl font-semibold mb-6">Projects</h2>
+      <section>
+        <h2 className="text-sm uppercase tracking-widest text-neutral-500 mb-4">
+          Projects
+        </h2>
         <ul className="space-y-4">
           {projects.map((p) => (
-            <li key={p.title} className="border border-neutral-200 dark:border-neutral-800 rounded-lg p-5 hover:border-neutral-400 dark:hover:border-neutral-600 transition">
-              <a href={p.href} target="_blank" rel="noreferrer" className="block">
-                <h3 className="font-semibold">{p.title}</h3>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">{p.description}</p>
+            <li key={p.name}>
+              <a
+                href={p.href}
+                target="_blank"
+                rel="noreferrer"
+                className="no-underline block group"
+              >
+                <div className="flex items-baseline justify-between gap-4">
+                  <span className="font-medium group-hover:underline underline-offset-4">
+                    {p.name}
+                  </span>
+                  <span className="text-xs text-neutral-500">github ↗</span>
+                </div>
+                <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-1 leading-6">
+                  {p.description}
+                </p>
               </a>
             </li>
           ))}
@@ -57,32 +80,50 @@ export default function HomePage() {
       </section>
 
       <section>
-        <div className="flex items-baseline justify-between mb-6">
-          <h2 className="text-2xl font-semibold">Latest writing</h2>
-          <Link href="/blog" className="text-sm text-blue-600 hover:underline">All posts →</Link>
-        </div>
-        <ul className="space-y-3">
-          {posts.map((post) => (
-            <li key={post.slug}>
-              <Link href={`/blog/${post.slug}`} className="group flex items-baseline justify-between gap-4">
-                <span className="group-hover:underline">{post.title}</span>
-                <span className="text-sm text-neutral-500 whitespace-nowrap">{post.date}</span>
-              </Link>
-            </li>
-          ))}
-          {posts.length === 0 && (
-            <li className="text-neutral-500 text-sm">No posts yet — add a markdown file in <code>content/posts/</code>.</li>
-          )}
-        </ul>
+        <h2 className="text-sm uppercase tracking-widest text-neutral-500 mb-4">
+          Writing
+        </h2>
+        {posts.length === 0 ? (
+          <p className="text-sm text-neutral-500">Nothing published yet.</p>
+        ) : (
+          <ul className="space-y-2">
+            {posts.map((post) => (
+              <li key={post.slug}>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="no-underline flex items-baseline justify-between gap-6 group"
+                >
+                  <span className="group-hover:underline underline-offset-4">
+                    {post.title}
+                  </span>
+                  <span className="text-sm text-neutral-500 whitespace-nowrap tabular-nums">
+                    {post.date}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
 
-      <section id="contact">
-        <h2 className="text-2xl font-semibold mb-4">Contact</h2>
-        <p className="text-neutral-700 dark:text-neutral-300">
-          Email me at <a className="text-blue-600 hover:underline" href="mailto:you@example.com">you@example.com</a>, or find me on{" "}
-          <a className="text-blue-600 hover:underline" href="https://github.com/your-username">GitHub</a> and{" "}
-          <a className="text-blue-600 hover:underline" href="https://linkedin.com/in/your-username">LinkedIn</a>.
-        </p>
+      <section>
+        <h2 className="text-sm uppercase tracking-widest text-neutral-500 mb-4">
+          Elsewhere
+        </h2>
+        <ul className="space-y-2 text-neutral-700 dark:text-neutral-300">
+          <li>
+            <a href="mailto:fahim@bitsit.in">fahim@bitsit.in</a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/mukhtharali16"
+              target="_blank"
+              rel="noreferrer"
+            >
+              github.com/mukhtharali16
+            </a>
+          </li>
+        </ul>
       </section>
     </div>
   );
