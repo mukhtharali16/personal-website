@@ -33,87 +33,7 @@ const trivia = [
   "Currently nerding out on agentic AI — LangGraph, tool-using agents, and the messy middle of getting them to actually finish a task.",
   "Will happily spend a Saturday debugging a broken build and call it relaxing.",
   "Coffee in the morning, chai by evening. Both non-negotiable.",
-  "Movie taste swings from Kurosawa to Nolan to Malayalam classics in the same week — see below.",
-];
-
-const movies = [
-  {
-    title: "Top Gun",
-    year: 1986,
-    poster: "/movies/top-gun.jpg",
-    description:
-      "Maverick, jets, and the loudest soundtrack of the '80s. Pure cinematic adrenaline.",
-  },
-  {
-    title: "Seven Samurai",
-    year: 1954,
-    poster: "/movies/seven-samurai.jpg",
-    description:
-      "Kurosawa's blueprint for every team-assembles-to-defend-the-village story since. Three-plus hours that feel like ninety minutes.",
-  },
-  {
-    title: "Citizen Kane",
-    year: 1941,
-    poster: "/movies/citizen-kane.jpg",
-    description:
-      "Orson Welles at 25, reinventing what a movie could do with a camera. Rosebud still hits.",
-  },
-  {
-    title: "Oru Vadakkan Veeragatha",
-    year: 1989,
-    poster: "/movies/oru-vadakkan-veeragatha.jpg",
-    description:
-      "Malayalam cinema at its most literary — MT's retelling of the Chandu legend, with Mammootty giving the performance of a career.",
-  },
-  {
-    title: "Dasharatham",
-    year: 1989,
-    poster: "/movies/dasharatham.jpg",
-    description:
-      "A quiet, grown-up film about a single man who wants to be a father. Mohanlal in one of his warmest roles.",
-  },
-  {
-    title: "Project Hail Mary",
-    year: 2026,
-    poster: "/movies/project-hail-mary.jpg",
-    description:
-      "Andy Weir's problem-solving-in-space novel on the big screen — engineering as heroism, with an alien best friend.",
-  },
-  {
-    title: "Seven Psychopaths",
-    year: 2012,
-    poster: "/movies/seven-psychopaths.jpg",
-    description:
-      "Martin McDonagh writing a movie about writing a movie, with a stolen Shih Tzu and a lot of blood.",
-  },
-  {
-    title: "Midsommar",
-    year: 2019,
-    poster: "/movies/midsommar.jpg",
-    description:
-      "A horror film set entirely in daylight. Ari Aster turning a breakup into folk-ritual catharsis.",
-  },
-  {
-    title: "Oppenheimer",
-    year: 2023,
-    poster: "/movies/oppenheimer.jpg",
-    description:
-      "Three hours of physics, politics, and guilt — Nolan at his most restrained, Cillian Murphy at his most haunted.",
-  },
-  {
-    title: "Fight Club",
-    year: 1999,
-    poster: "/movies/fight-club.jpg",
-    description:
-      "We don't talk about it. But the editing, the score, and the third-act reveal still set the bar.",
-  },
-  {
-    title: "The Dark Knight",
-    year: 2008,
-    poster: "/movies/the-dark-knight.jpg",
-    description:
-      "Heath Ledger's Joker turned a superhero movie into a crime epic. Still the benchmark.",
-  },
+  "Movie taste swings from Kurosawa to Nolan to Malayalam classics in the same week.",
 ];
 
 export default function HomePage() {
@@ -155,38 +75,21 @@ export default function HomePage() {
       </section>
 
       <section>
-        <h2 className="text-sm uppercase tracking-widest text-neutral-500 mb-2">
-          Top 10 Movies
-        </h2>
-        <p className="text-sm text-neutral-500 mb-6">
-          (Eleven, actually. Ten is a lie — there are too many good films.)
+        <div className="flex items-baseline justify-between mb-4">
+          <h2 className="text-sm uppercase tracking-widest text-neutral-500">
+            Films
+          </h2>
+          <Link
+            href="/films"
+            className="text-xs text-neutral-500 no-underline hover:underline"
+          >
+            see all ↗
+          </Link>
+        </div>
+        <p className="text-neutral-700 dark:text-neutral-300 leading-7">
+          A running list of favourite films — Kurosawa, Nolan, a handful of
+          Malayalam classics. <Link href="/films">Browse the list</Link>.
         </p>
-        <ul className="grid grid-cols-2 gap-x-5 gap-y-8">
-          {movies.map((m) => (
-            <li key={m.title} className="space-y-3">
-              <div className="aspect-[2/3] overflow-hidden rounded-md bg-neutral-100 dark:bg-neutral-900 ring-1 ring-neutral-200 dark:ring-neutral-800">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={m.poster}
-                  alt={`${m.title} poster`}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                />
-              </div>
-              <div>
-                <div className="flex items-baseline justify-between gap-2">
-                  <span className="font-medium leading-tight">{m.title}</span>
-                  <span className="text-xs text-neutral-500 tabular-nums">
-                    {m.year}
-                  </span>
-                </div>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-1 leading-6">
-                  {m.description}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
       </section>
 
       <section>
